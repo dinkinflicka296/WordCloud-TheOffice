@@ -2,7 +2,7 @@ from wordcloud import WordCloud
 import matplotlib.pyplot as plt
 
 
-f = open('/kaggle/input/frequency-of-words-the-office/freq.txt', 'r')
+f = open('freq.txt', 'r')
 
 
 word_frequency = {}
@@ -15,3 +15,6 @@ removable_words = ['the', 'to', 'a', 'and', 'it', 'that', 'is', 'of', 'in', 'thi
                   'so', 'are', 'its', 'your', 'but', 'at', 'with', 'youre']
 for i in removable_words: 
     word_frequency.pop(i)
+    
+wc = WordCloud(background_color="black",width=1000,height=1000,relative_scaling=0.2,normalize_plurals=False).generate_from_frequencies(word_frequency)
+plt.imshow(wc)
